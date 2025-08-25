@@ -1,0 +1,317 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 0%);
+  --foreground: hsl(122, 100%, 56%);
+  --card: hsl(228, 9.8%, 10%);
+  --card-foreground: hsl(0, 0%, 85.1%);
+  --popover: hsl(0, 0%, 0%);
+  --popover-foreground: hsl(122, 100%, 56%);
+  --primary: hsl(195, 100%, 50%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(195, 15.4%, 94.9%);
+  --secondary-foreground: hsl(210, 25%, 7.8%);
+  --muted: hsl(0, 0%, 9.4%);
+  --muted-foreground: hsl(210, 3.4%, 46.3%);
+  --accent: hsl(205.7, 70%, 7.8%);
+  --accent-foreground: hsl(195, 100%, 50%);
+  --destructive: hsl(356.3, 90.6%, 54.3%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(122, 100%, 56%);
+  --input: hsl(207.7, 27.7%, 18.4%);
+  --ring: hsl(122, 100%, 56%);
+  --chart-1: hsl(195, 100%, 50%);
+  --chart-2: hsl(159.8, 100%, 36.1%);
+  --chart-3: hsl(42, 92.8%, 56.3%);
+  --chart-4: hsl(147.1, 78.5%, 41.9%);
+  --chart-5: hsl(341.5, 75.2%, 51%);
+  --sidebar: hsl(228, 9.8%, 10%);
+  --sidebar-foreground: hsl(0, 0%, 85.1%);
+  --sidebar-primary: hsl(122, 100%, 56%);
+  --sidebar-primary-foreground: hsl(0, 0%, 100%);
+  --sidebar-accent: hsl(205.7, 70%, 7.8%);
+  --sidebar-accent-foreground: hsl(195, 100%, 50%);
+  --sidebar-border: hsl(205.7, 15.8%, 26.1%);
+  --sidebar-ring: hsl(122, 100%, 56%);
+  --font-sans: 'Roboto Mono', monospace;
+  --font-serif: Georgia, serif;
+  --font-mono: 'Roboto Mono', monospace;
+  --radius: 1.3rem;
+  --cyber-green: hsl(122, 100%, 56%);
+  --cyber-blue: hsl(195, 100%, 50%);
+  --cyber-purple: hsl(271, 76%, 53%);
+  --cyber-magenta: hsl(328, 100%, 54%);
+}
+
+.dark {
+  --background: hsl(0, 0%, 0%);
+  --foreground: hsl(122, 100%, 56%);
+  --card: hsl(228, 9.8%, 10%);
+  --card-foreground: hsl(0, 0%, 85.1%);
+  --popover: hsl(0, 0%, 0%);
+  --popover-foreground: hsl(122, 100%, 56%);
+  --primary: hsl(195, 100%, 50%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(195, 15.4%, 94.9%);
+  --secondary-foreground: hsl(210, 25%, 7.8%);
+  --muted: hsl(0, 0%, 9.4%);
+  --muted-foreground: hsl(210, 3.4%, 46.3%);
+  --accent: hsl(205.7, 70%, 7.8%);
+  --accent-foreground: hsl(195, 100%, 50%);
+  --destructive: hsl(356.3, 90.6%, 54.3%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(122, 100%, 56%);
+  --input: hsl(207.7, 27.7%, 18.4%);
+  --ring: hsl(122, 100%, 56%);
+  --chart-1: hsl(195, 100%, 50%);
+  --chart-2: hsl(159.8, 100%, 36.1%);
+  --chart-3: hsl(42, 92.8%, 56.3%);
+  --chart-4: hsl(147.1, 78.5%, 41.9%);
+  --chart-5: hsl(341.5, 75.2%, 51%);
+  --sidebar: hsl(228, 9.8%, 10%);
+  --sidebar-foreground: hsl(0, 0%, 85.1%);
+  --sidebar-primary: hsl(122, 100%, 56%);
+  --sidebar-primary-foreground: hsl(0, 0%, 100%);
+  --sidebar-accent: hsl(205.7, 70%, 7.8%);
+  --sidebar-accent-foreground: hsl(195, 100%, 50%);
+  --sidebar-border: hsl(205.7, 15.8%, 26.1%);
+  --sidebar-ring: hsl(122, 100%, 56%);
+  --font-sans: 'Roboto Mono', monospace;
+  --font-serif: Georgia, serif;
+  --font-mono: 'Roboto Mono', monospace;
+  --radius: 1.3rem;
+  --cyber-green: hsl(122, 100%, 56%);
+  --cyber-blue: hsl(195, 100%, 50%);
+  --cyber-purple: hsl(271, 76%, 53%);
+  --cyber-magenta: hsl(328, 100%, 54%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-mono antialiased bg-background text-foreground;
+  }
+}
+
+/* CRT and Terminal Effects */
+.terminal-container {
+  background: #000;
+  color: var(--cyber-green);
+  font-family: 'Roboto Mono', monospace;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* CRT Scanline Effect */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.crt-scanline::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--cyber-green),
+    transparent
+  );
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* CRT Flicker Effect */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.95; }
+}
+
+.terminal-container {
+  animation: flicker 0.15s infinite;
+  position: relative;
+}
+
+.terminal-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at center,
+    transparent 0%,
+    rgba(0, 255, 127, 0.03) 100%
+  );
+  pointer-events: none;
+}
+
+/* Glitch Animation */
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+.glitch-text {
+  animation: glitch 0.3s infinite;
+  text-shadow: 
+    2px 0 var(--cyber-magenta),
+    -2px 0 var(--cyber-blue);
+}
+
+/* Typewriter Effect */
+@keyframes typewriter {
+  to { width: 100%; }
+}
+
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  animation: typewriter 2s steps(40) forwards;
+}
+
+/* Enhanced Terminal Input */
+.terminal-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--cyber-green);
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+  caret-color: var(--cyber-green);
+}
+
+.terminal-input::placeholder {
+  color: rgba(0, 255, 127, 0.5);
+}
+
+/* Pulsing Glow Effect */
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 
+      0 0 20px var(--cyber-green),
+      inset 0 0 20px rgba(0, 255, 127, 0.1);
+  }
+  50% { 
+    box-shadow: 
+      0 0 40px var(--cyber-green),
+      inset 0 0 40px rgba(0, 255, 127, 0.2);
+  }
+}
+
+.secret-container {
+  border: 2px solid var(--cyber-green);
+  animation: pulse-glow 2s infinite;
+}
+
+/* Scrollbar Styling */
+.terminal-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminal-scroll::-webkit-scrollbar-track {
+  background: rgba(0, 255, 127, 0.1);
+}
+
+.terminal-scroll::-webkit-scrollbar-thumb {
+  background: var(--cyber-green);
+  border-radius: 4px;
+}
+
+/* Blinking Cursor */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.blinking-cursor::after {
+  content: '_';
+  animation: blink 1s infinite;
+}
+
+/* Custom Cyber Colors */
+.text-cyber-green {
+  color: var(--cyber-green);
+}
+
+.text-cyber-blue {
+  color: var(--cyber-blue);
+}
+
+.text-cyber-purple {
+  color: var(--cyber-purple);
+}
+
+.text-cyber-magenta {
+  color: var(--cyber-magenta);
+}
+
+.border-cyber-green {
+  border-color: var(--cyber-green);
+}
+
+.border-cyber-blue {
+  border-color: var(--cyber-blue);
+}
+
+.border-cyber-purple {
+  border-color: var(--cyber-purple);
+}
+
+.border-cyber-magenta {
+  border-color: var(--cyber-magenta);
+}
+
+.bg-cyber-green {
+  background-color: var(--cyber-green);
+}
+
+.bg-cyber-blue {
+  background-color: var(--cyber-blue);
+}
+
+.bg-cyber-purple {
+  background-color: var(--cyber-purple);
+}
+
+.bg-cyber-magenta {
+  background-color: var(--cyber-magenta);
+}
+
+.hover\:bg-cyber-green:hover {
+  background-color: var(--cyber-green);
+}
+
+.hover\:bg-cyber-blue:hover {
+  background-color: var(--cyber-blue);
+}
+
+.hover\:bg-cyber-purple:hover {
+  background-color: var(--cyber-purple);
+}
+
+.hover\:bg-cyber-magenta:hover {
+  background-color: var(--cyber-magenta);
+}
